@@ -16,7 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author Ronaldo Henriques
+ * @author Ronaldo Henriques (ronaldo_ahenriques@yahoo.com.br)
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 
@@ -200,7 +200,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 Chama a função que efetivamente faz a divisão
                  */
                 String arqDividido = Divisor1.dividePDF(arquivoPDF, arquivoSaida, tamArqSel);
-
+               
                 if (arqDividido.equals("ok")) {
                     JOptionPane.showMessageDialog(null, "Divisão efetuada com sucesso");
                     btnDividir.setEnabled(true);    //Só poderá devidir novamente se a divisaõ de certo

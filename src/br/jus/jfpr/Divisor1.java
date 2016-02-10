@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /**
  *
- * @author RAH
+ * @author Ronaldo Henriques (ronaldo_ahenriques@yahoo.com.br)
  */
 public class Divisor1 {
 
@@ -27,7 +27,7 @@ public class Divisor1 {
      * dividindo por, 3, 4, 5, etc. até que todos arquivo fiquem dentro do
      * limite
      *
-     * @param arquivoEntrada O arquivo será dividido
+     * @param arquivoEntrada O arquivo que será dividido
      * @param arquivoSaida O nome do arquivo que será criado
      * @param tamArqSel Tamanho selecionado que deverão ficar os arquivos
      * divididos
@@ -42,11 +42,11 @@ public class Divisor1 {
         String MensagemErro = "ok";
         int fatorDivisao = 2; //Incialmente dividirá em 2
         arquivoSaida = arquivoSaida.substring(0, arquivoSaida.indexOf('.')) + "-divido"; //PAra definir o nome do arquivo de saída
-
+        
         try {
-            PdfReader PdfDeEntrada = new PdfReader(arquivoEntrada.toString()); //Para ler o arquivo de entrada
+            PdfReader PdfDeEntrada = new PdfReader(arquivoEntrada.getAbsolutePath()); //Para ler o arquivo de entrada
             final int totalPaginas = PdfDeEntrada.getNumberOfPages(); //Verifica o total de páginas
-            tamInicial = paraPagina = totalPaginas / fatorDivisao;  //Define o tamanho (em páginas) do 1 arquivo e em quanto deverá incrementar(serão o mesmo)
+            tamInicial = paraPagina = (totalPaginas / fatorDivisao) + 1;  //Define o tamanho (em páginas) do 1 arquivo e em quanto deverá incrementar(serão o mesmo)
             PdfImportedPage pagina;
 
             int i = 1; //Contador simples
@@ -70,7 +70,7 @@ public class Divisor1 {
                     delete(arquivoSaida, i);    //Chamar a função para deletar todos arquivos até a chave i
                     daPagina = i = 1; //Para recomeçar tudo de novo
                     fatorDivisao++; //Se um arquivo ficou maior, então deve aumentar a divisão
-                    tamInicial = paraPagina = totalPaginas / fatorDivisao; //Para recomeçar tudo de novo
+                    tamInicial = paraPagina = (totalPaginas / fatorDivisao) + 1; //Para recomeçar tudo de novo
                 } else {
                     i++; //Continua a divisao
                     if (i == fatorDivisao) { //Ou seja, chegou a ultima divisao
